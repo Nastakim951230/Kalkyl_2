@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/style"
     tools:context=".MainActivity">
+
     <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        tools:ignore="MissingConstraints" />
+        android:contentDescription="@string/app_name"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
     <TextView
         android:id="@+id/oneNomer"
         android:layout_width="0dp"

@@ -37,6 +37,8 @@ public class Str_2 extends AppCompatActivity implements View.OnClickListener {
     boolean fnum;
     String chose;
 
+    Spinner spinner;
+    String[] str_array;
 
 
     @Override
@@ -50,7 +52,10 @@ public class Str_2 extends AppCompatActivity implements View.OnClickListener {
         fnum = true;
         chose = "";
 
-
+        spinner = findViewById(R.id.spinner);
+        str_array = new String[]{"История","","","","","","","","","",""};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, str_array);
+        spinner.setAdapter(adapter1);
 
         firstNumber = findViewById(R.id.oneNomer);
         secondNumber = findViewById(R.id.secondNomer);
@@ -144,19 +149,39 @@ public class Str_2 extends AppCompatActivity implements View.OnClickListener {
                     case ("^"):
                         double resPow = Math.pow(num1, num2);
                         result.setText(String.valueOf(resPow));
+                        for (int i = 10; i>0;i--)
+                        {
+                            str_array[i] = str_array[i-1];
+                        }
+                        str_array[1] = String.valueOf((num1)+"^"+(num2)+"="+(resPow));
                         break;
                     case ("√"):
                         double resSqrt = Math.pow(num1, (1/num2));
-                        result.setText(String.valueOf(resSqrt));
+                        result.setText(String.valueOf((num1)+"√"+(num2)+"="+resSqrt));
+                        for (int i = 10; i>0;i--)
+                        {
+                            str_array[i] = str_array[i-1];
+                        }
+                        str_array[1] = String.valueOf(resSqrt);
                         break;
                     case ("sin"):
                         double resSin= Math.sin(num1);
                         result.setText(String.valueOf(resSin));
+                        for (int i = 10; i>0;i--)
+                        {
+                            str_array[i] = str_array[i-1];
+                        }
+                        str_array[1] = String.valueOf("sin "+(num1)+"="+(resSin));
                         break;
                     case ("cos"):
 
                         double resCos = Math.cos(num1);
                         result.setText(String.valueOf(resCos));
+                        for (int i = 10; i>0;i--)
+                        {
+                            str_array[i] = str_array[i-1];
+                        }
+                        str_array[1] = String.valueOf("cos "+(num1)+"="+(resCos));
                         break;
                 }
                 break;

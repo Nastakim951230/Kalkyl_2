@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView secondNumber;
     TextView result;
 
-    String[] history = new String[5];
+
 
     Button zero;
     Button one;
@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean fnum;
     String chose;
 
-
+    Spinner spinner;
+    String[] str_array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fnum = true;
         chose = "";
 
-        ArrayAdapter<String> mathHistory = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, history);
-        mathHistory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner spHistory = (Spinner) findViewById(R.id.spinner);
-        spHistory.setAdapter(mathHistory);
+        spinner = findViewById(R.id.spinner);
+        str_array = new String[]{"История","","","","","","","","","",""};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, str_array);
+        spinner.setAdapter(adapter1);
 
         firstNumber = findViewById(R.id.oneNomer);
         secondNumber = findViewById(R.id.secondNomer);
@@ -150,41 +151,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case ("+"):
                         float resPlus = num1 + num2;
                         result.setText(String.valueOf(resPlus));
-                        for (int i = 3; i >= 0; i--)
+                        for (int i = 10; i>0;i--)
                         {
-                            history[i+1] = history[i];
+                            str_array[i] = str_array[i-1];
                         }
-                        history[0] = String.valueOf(num1+" + "+num2+" = "+resPlus);
+                        str_array[1] = String.valueOf((num1)+"+"+(num2)+"="+(resPlus));
                         break;
                     case ("-"):
                         float resMinus = num1 - num2;
                         result.setText(String.valueOf(resMinus));
-                        for (int i = 3; i >= 0; i--)
+                        for (int i = 10; i>0;i--)
                         {
-                            history[i+1] = history[i];
+                            str_array[i] = str_array[i-1];
                         }
-                        history[0] = String.valueOf(num1+"-"+num2+" = "+resMinus);
+                        str_array[1] = String.valueOf((num1)+"-"+(num2)+"="+(resMinus));
 
                         break;
                     case ("X"):
                         float resMultiply = num1 * num2;
                         result.setText(String.valueOf(resMultiply));
-                        for (int i = 3; i >= 0; i--)
+                        for (int i = 10; i>0;i--)
                         {
-                            history[i+1] = history[i];
+                            str_array[i] = str_array[i-1];
                         }
-                        history[0] = String.valueOf(num1+"*"+num2+" = "+resMultiply);
+                        str_array[1] = String.valueOf((num1)+"*"+(num2)+"="+(resMultiply));
 
                         break;
                     case ("/"):
                         float resDivide = num1 / num2;
                         result.setText(String.valueOf(resDivide));
-                        for (int i = 3; i >= 0; i--)
+                        for (int i = 10; i>0;i--)
                         {
-                            history[i+1] = history[i];
+                            str_array[i] = str_array[i-1];
                         }
-                        history[0] = String.valueOf(num1+" / "+num2+" = "+resDivide);
-
+                        str_array[1] = String.valueOf((num1)+"/"+(num2)+"="+(resDivide));
                         break;
 
                 }

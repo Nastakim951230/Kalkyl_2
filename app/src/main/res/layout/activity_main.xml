@@ -91,9 +91,7 @@
                 android:backgroundTintMode="add"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="2"
+                android:layout_margin="1dp"
                 android:text="@string/nine" />
 
             <android.widget.Button
